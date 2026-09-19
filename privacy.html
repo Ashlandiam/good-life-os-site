@@ -43,11 +43,39 @@ or a commercial service. Questions can be sent to
       check-ins (energy, mood, hunger and stress ratings, water, optional
       bloating and pain ratings, an optional note), and daily nutrition totals.</li>
   <li><strong>Oura data, once that connection is enabled and used:</strong>
-      daily sleep, readiness and activity summaries, and sleep-period detail
-      including sleep duration, average heart rate, lowest heart rate and average
-      heart-rate variability. This is requested under Oura's <code>daily</code>
-      permission and covers only the operator's own account.</li>
+      covering only the operator's own account. The permissions requested are
+      listed below, together with the measurements they cover.</li>
 </ul>
+
+<p>The application requests these five Oura permissions and no others:
+<code>daily</code>, <code>heartrate</code>, <code>spo2</code>,
+<code>heart_health</code> and <code>stress</code>. The request always names
+them explicitly. It is never left blank, because a blank request would ask
+Oura for every permission the account can grant, including personal details
+and email, which this application does not want and does not use.</p>
+
+<p>Between them, those permissions cover:</p>
+
+<ul>
+  <li>Daily sleep, readiness and activity summaries — the sleep score, the
+      readiness score and daily steps.</li>
+  <li>Sleep-period detail — time asleep, average and lowest heart rate, and
+      average heart-rate variability.</li>
+  <li>Heart rate measured across the day, not only during sleep.</li>
+  <li>Blood-oxygen average recorded during sleep, and the breathing
+      disturbance index derived from it.</li>
+  <li>Cardiovascular measures — predicted vascular age, pulse wave velocity
+      and VO<sub>2</sub> max.</li>
+  <li>Daily stress and resilience summaries.</li>
+</ul>
+
+<p>Which permission governs which measurement is not fully documented by Oura,
+and Oura's published API specification does not currently list a stress
+permission even though its developer portal offers one. The application
+therefore records what it was actually able to read, rather than assuming that
+a granted permission implies available data. Where a measurement cannot be
+read, it is shown as unavailable together with what was observed — a refusal
+or an empty result — and never as a zero.</p>
 
 <p>No data about any other person is collected, at any point. The application
 has no other users, so it holds no other person's data.</p>
@@ -58,6 +86,12 @@ has no other users, so it holds no other person's data.</p>
 Oura's API version 2, over an encrypted connection, and only after the operator
 has explicitly granted access through Oura's own authorisation screen. The
 application never sees or handles an Oura password.</p>
+
+<p>Authorisation happens through Oura's standard OAuth flow. Before the
+browser is opened, the application shows the exact permissions it is about to
+request, so the request is visible rather than implied. Oura's authorisation
+screen then shows what is being granted, and access begins only if the
+operator approves it there.</p>
 
 <h2>What leaves the computer</h2>
 
