@@ -1,0 +1,97 @@
+/* Good Life OS - informational pages.
+   Self-contained: no external fonts, scripts, analytics or trackers, so the
+   pages make no third-party requests when someone reads them. */
+
+:root {
+  --shadow: #0B0F1A;
+  --panel: #161F33;
+  --line: #22314C;
+  --text: #E6EDF4;
+  --soft: #A9BBD4;
+  --mute: #8FA3C0;
+  --aqua: #40E5FF;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--shadow);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.wrap {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 3rem 16px 5rem;
+}
+
+header.site {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.brand {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.brand span { color: var(--aqua); }
+
+.tagline { color: var(--mute); margin: 0.35rem 0 0; font-size: 0.95rem; }
+
+h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 0 1rem; letter-spacing: -0.02em; }
+h2 { font-size: 1.2rem; margin: 2.5rem 0 0.75rem; letter-spacing: -0.01em; }
+
+p, li { color: var(--soft); }
+li { margin-bottom: 0.4rem; }
+
+strong { color: var(--text); }
+
+a { color: var(--aqua); }
+
+nav.pages {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.95rem;
+}
+
+nav.pages a { margin-right: 1.25rem; }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+  margin: 1.5rem 0;
+}
+
+.panel p:last-child, .panel ul:last-child { margin-bottom: 0; }
+
+.updated { color: var(--mute); font-size: 0.9rem; margin-top: 3rem; }
+
+.fill-me {
+  background: #3A2410;
+  border: 1px dashed #F7C899;
+  color: #F7C899;
+  border-radius: 6px;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+code {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.9em;
+}

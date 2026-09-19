@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy — Good Life OS</title>
+<meta name="description" content="How Good Life OS collects, stores, uses, retains and deletes data.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="site">
+  <p class="brand">Good Life <span>OS</span></p>
+  <p class="tagline">Privacy policy</p>
+</header>
+
+<h1>Privacy policy</h1>
+
+<p>Good Life OS is a single-user application. Its only user is the person who
+built and runs it, on their own computer. This policy describes what the
+application does with data — how it is collected, stored, used, disclosed,
+shared, retained and deleted.</p>
+
+<div class="panel">
+  <p><strong>Status at the date below:</strong> the Oura connection is in
+  development and no Oura data has been synced. The sections describing Oura
+  data state how it will be handled once that connection is enabled, and the
+  application is built to match.</p>
+</div>
+
+<h2>Who operates it</h2>
+
+<p>Good Life OS is operated by Ashlandiam,
+acting as a private individual, for their own personal use. It is not a company
+or a commercial service. Questions can be sent to
+<a href="mailto:ashlandiam@gmail.com">ashlandiam@gmail.com</a>.</p>
+
+<h2>What data is involved</h2>
+
+<ul>
+  <li><strong>Information the operator types in:</strong> weigh-ins, daily
+      check-ins (energy, mood, hunger and stress ratings, water, optional
+      bloating and pain ratings, an optional note), and daily nutrition totals.</li>
+  <li><strong>Oura data, once that connection is enabled and used:</strong>
+      daily sleep, readiness and activity summaries, and sleep-period detail
+      including sleep duration, average heart rate, lowest heart rate and average
+      heart-rate variability. This is requested under Oura's <code>daily</code>
+      permission and covers only the operator's own account.</li>
+</ul>
+
+<p>No data about any other person is collected, at any point. The application
+has no other users, so it holds no other person's data.</p>
+
+<h2>How it is collected</h2>
+
+<p>Typed entries are collected as they are entered. Oura data is collected from
+Oura's API version 2, over an encrypted connection, and only after the operator
+has explicitly granted access through Oura's own authorisation screen. The
+application never sees or handles an Oura password.</p>
+
+<h2>What leaves the computer</h2>
+
+<p>Stating this precisely, because "nothing is transmitted" would be false.</p>
+
+<p>The application runs a web server on the operator's own computer, bound to
+the loopback interface so that it is reachable only from that computer. During
+Oura authorisation it also runs a second, short-lived local listener to receive
+the authorisation response; that listener shuts down as soon as the exchange
+completes.</p>
+
+<p>Outbound, the application contacts exactly one destination: <strong>Oura's
+API</strong>. Those requests carry the application's credentials, the
+authorisation code during sign-in, the access token on each data request, and
+the date ranges being requested. They are sent over an encrypted connection.</p>
+
+<p>No other destination is contacted. There is no analytics, no telemetry, no
+crash reporting, no advertising or tracking component, and no third-party
+service of any kind.</p>
+
+<p><strong>Health records are never uploaded.</strong> There is no hosted
+dashboard, no account server and no remote copy of the database. The records
+are written to a file on the operator's computer and stay there.</p>
+
+<h2>How it is stored</h2>
+
+<p>In a SQLite database file in the operator's own user library folder, on the
+operator's computer, along with local backup snapshots of that file.</p>
+
+<p>Oura access credentials are stored in the macOS Keychain. They are never
+written to the database, never written to a backup, and never written to a log.</p>
+
+<h2>How it is used</h2>
+
+<p>Solely to display the operator's own information back to them — current
+figures, trends over time, and how complete each day's record is.</p>
+
+<p>The data is never used to train, fine-tune, develop or evaluate any AI or
+machine-learning model. It is never combined with data about any other person.
+It is never used for advertising, marketing, profiling or research.</p>
+
+<h2>How it is disclosed and shared</h2>
+
+<p>It is not disclosed or shared with anyone. Nothing is sent to the developer,
+because the developer and the user are the same person and the records never
+leave their computer.</p>
+
+<p>The operator can export their own records as CSV files. Those files are
+written to their own computer, and what happens to them afterwards is entirely
+the operator's choice.</p>
+
+<h2>How long it is retained</h2>
+
+<p>Information the operator types in is kept until the operator deletes it.</p>
+
+<p>Synced Oura data is likewise kept on the operator's computer until the
+operator deletes it, so that long-run trends remain available. It is kept for no
+purpose other than showing the operator their own history.</p>
+
+<h2>How it is deleted</h2>
+
+<p>The application provides two separate actions, because they are different
+things and one should not silently perform the other:</p>
+
+<ul>
+  <li><strong>Disconnect Oura.</strong> Stops all syncing and removes the stored
+      Oura credentials from the Keychain. <strong>Existing synced Oura history
+      remains in the local database</strong>, and the application says so plainly
+      at the moment of disconnecting rather than leaving it to be assumed.</li>
+  <li><strong>Delete Oura data.</strong> Removes every synced Oura record from
+      the local database. This is offered on its own, and can be used whether or
+      not the connection is still active.</li>
+</ul>
+
+<h2>Deletion is not complete until backups are cleared</h2>
+
+<p>This is stated directly rather than buried, because it is the part that is
+easy to get wrong.</p>
+
+<p>The application keeps local backup snapshots of its database. A snapshot
+taken <em>before</em> a deletion still contains whatever was deleted afterwards.
+Removing records from the live database does not reach backwards into copies
+already written.</p>
+
+<p>So deleting Oura data is treated as one operation covering both: the
+application removes the records from the live database and then clears them from
+every local backup snapshot that contains them, rewriting each snapshot without
+those records.</p>
+
+<p><strong>If any snapshot is not cleared</strong> — because the operator
+declines, or a snapshot cannot be rewritten — then the deletion is
+<strong>not complete</strong>, and the application does not describe it as
+though it were. It names each snapshot that still contains Oura data and
+continues to report that state until those snapshots are cleared or deleted.
+Backups are ordinary files and can also simply be deleted, which removes their
+contents entirely.</p>
+
+<h2>Withdrawing access</h2>
+
+<p>Access to Oura data can be withdrawn at any time, in either of two places,
+and neither depends on the other:</p>
+
+<ul>
+  <li>In Good Life OS, using <strong>Disconnect Oura</strong>, which stops
+      syncing immediately and removes the stored credentials.</li>
+  <li>In the Oura account itself, by revoking the application's authorisation at
+      <a href="https://cloud.ouraring.com/">cloud.ouraring.com</a>. Revoking
+      there takes effect immediately and prevents any further access, whatever
+      the application does.</li>
+</ul>
+
+<p>Withdrawing access carries no penalty and does not affect the operator's Oura
+account, ring or subscription in any way. Withdrawing access stops further
+collection; deleting data already collected is the separate action described
+above.</p>
+
+<h2>Changes</h2>
+
+<p>If the application's behaviour changes, this page is updated to match it.
+The date below says when it was last accurate.</p>
+
+<nav class="pages">
+  <a href="index.html">Overview</a>
+  <a href="terms.html">Terms of use</a>
+</nav>
+
+<p class="updated">Last updated 19 September 2026.</p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good Life OS</title>
+<meta name="description" content="A private, single-user personal health dashboard that runs locally on its operator's own computer.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="site">
+  <p class="brand">Good Life <span>OS</span></p>
+  <p class="tagline">A private personal health dashboard, run locally by one person for their own use.</p>
+</header>
+
+<h1>What this is</h1>
+
+<p>Good Life OS is a personal health dashboard that runs on its operator's own
+computer. It brings weight, nutrition and short daily check-ins into one place,
+so its operator can see their own trends over time. An optional connection to
+the operator's own Oura account is in development.</p>
+
+<p>It has exactly one user, who is also the person who built and runs it. It is
+not a product, not a service, and not offered to anyone else. There are no
+accounts to create, nothing to sign up for, and no way for another person to
+use it.</p>
+
+<div class="panel">
+  <p><strong>This site is the only public part of Good Life OS.</strong> These
+  three pages exist because the Oura API requires an application to publish a
+  privacy policy and terms. The dashboard itself, its database and every record
+  in it stay on the operator's computer and are never published.</p>
+</div>
+
+<h2>What it does today</h2>
+
+<ul>
+  <li>Records manually entered weigh-ins, keeping every reading and letting the
+      operator choose which one represents each day.</li>
+  <li>Records a daily check-in — energy, mood, hunger and stress ratings, water,
+      optional bloating and pain ratings, and a short note — as one row per day.</li>
+  <li>Records daily nutrition totals, with a mark for how complete each day is.</li>
+  <li>Shows those figures as trends over 7, 30 and 90 days, with the source and
+      date of every number visible, and gaps left as gaps.</li>
+  <li>Imports and exports <strong>nutrition</strong> and <strong>weight</strong>
+      records as CSV files on the operator's own computer, with a preview before
+      anything is written.</li>
+  <li>Exports <strong>check-ins</strong> as CSV. Check-ins are
+      <strong>export only</strong> — there is no check-in import, and the
+      application says so where the export is offered.</li>
+  <li>Makes local backup snapshots of its database, and can verify and restore
+      them.</li>
+</ul>
+
+<h2>What is not built yet</h2>
+
+<p>Listed here so this page does not describe features as though they exist:</p>
+
+<ul>
+  <li><strong>The Oura connection</strong> — in development. Nothing has been
+      synced from Oura at the time of writing. The
+      <a href="privacy.html">privacy policy</a> describes how Oura data will be
+      handled once the connection is enabled.</li>
+  <li><strong>MyFitnessPal CSV import</strong> — in development.</li>
+  <li><strong>Tape measurements, gut observations and care routines</strong> —
+      planned.</li>
+  <li><strong>Correlation and pattern analysis</strong> — planned.</li>
+</ul>
+
+<h2>What it deliberately does not do</h2>
+
+<ul>
+  <li>It does not produce a composite wellness score, a weight-loss promise, a
+      prescribed calorie target, or any treatment recommendation.</li>
+  <li>It does not diagnose anything, and it is not medical advice.</li>
+  <li>It does not infer body composition from weight and tape measurements.</li>
+  <li>It does not upload health records anywhere. There is no hosted dashboard,
+      no account server and no remote copy of the database.</li>
+</ul>
+
+<h2>How it runs, accurately stated</h2>
+
+<p>Good Life OS is a web application that runs a <strong>web server on the
+operator's own computer</strong>, which the operator opens in their browser.
+That server is bound to the loopback interface, so it is reachable only from
+that computer and not from any network. During Oura authorisation it also runs a
+second, short-lived local listener to receive the authorisation response, which
+shuts down as soon as the exchange completes.</p>
+
+<p>The application <strong>does send network requests</strong>, and it is worth
+being precise about which. Once the Oura connection is enabled, it will send
+authentication requests and data requests to Oura's API over an encrypted
+connection. Those requests carry the operator's own access credentials and the
+date ranges being requested. No other destination is contacted: there is no
+analytics service, no telemetry, no crash reporting and no third-party
+component.</p>
+
+<p>Health records themselves are never uploaded. They are written to a database
+file on the operator's computer and stay there.</p>
+
+<nav class="pages">
+  <a href="privacy.html">Privacy policy</a>
+  <a href="terms.html">Terms of use</a>
+</nav>
+
+<p class="updated">Operated by Ashlandiam.
+Last updated 19 September 2026.</p>
+
+</div>
+</body>
+</html>
