@@ -23,10 +23,9 @@ application does with data — how it is collected, stored, used, disclosed,
 shared, retained and deleted.</p>
 
 <div class="panel">
-  <p><strong>Status at the date below:</strong> the Oura connection is in
-  development and no Oura data has been synced. The sections describing Oura
-  data state how it will be handled once that connection is enabled, and the
-  application is built to match.</p>
+  <p><strong>Status at the date below:</strong> the Oura connection is enabled
+  and in use, and Oura data has been synced to the operator's computer. The
+  sections below describe how that data is handled, not how it would be.</p>
 </div>
 
 <h2>Who operates it</h2>
@@ -58,15 +57,23 @@ and email, which this application does not want and does not use.</p>
 
 <ul>
   <li>Daily sleep, readiness and activity summaries — the sleep score, the
-      readiness score and daily steps.</li>
-  <li>Sleep-period detail — time asleep, average and lowest heart rate, and
-      average heart-rate variability.</li>
+      readiness score, body-temperature deviation from the operator's own
+      baseline and the longer-run temperature trend deviation, daily steps,
+      active and total calories, and how the day divided into resting,
+      sedentary and non-wear time.</li>
+  <li>Sleep-period detail, for each period separately — when it began and
+      ended, time asleep and time in bed, time awake, how long was spent in
+      deep, light and REM sleep, how long it took to fall asleep, a sleep
+      efficiency figure, average and lowest heart rate, average heart-rate
+      variability, average breathing rate, and a count of restless
+      periods.</li>
   <li>Heart rate measured across the day, not only during sleep.</li>
   <li>Blood-oxygen average recorded during sleep, and the breathing
       disturbance index derived from it.</li>
   <li>Cardiovascular measures — predicted vascular age, pulse wave velocity
       and VO<sub>2</sub> max.</li>
-  <li>Daily stress and resilience summaries.</li>
+  <li>Daily stress and resilience summaries, including the sleep-recovery,
+      daytime-recovery and stress figures behind the resilience level.</li>
 </ul>
 
 <p>Which permission governs which measurement is not fully documented by Oura,
@@ -120,6 +127,17 @@ are written to a file on the operator's computer and stay there.</p>
 
 <p>In a SQLite database file in the operator's own user library folder, on the
 operator's computer, along with local backup snapshots of that file.</p>
+
+<p>Each Oura record is also kept in the form Oura sent it, reduced to the
+fields listed above together with the record's own identifier and date. Fields
+the application does not use are discarded rather than stored — among them a
+minute-by-minute trace of movement and metabolic rate. Keeping the reduced
+record means the figures above can be rebuilt on the computer without asking
+Oura for them again.</p>
+
+<p>That rebuilding is available only for records synced after this retention
+began. Older records remain available, but cannot be rebuilt from retained
+payloads unless fetched again.</p>
 
 <p>Oura access credentials are stored in the macOS Keychain. They are never
 written to the database, never written to a backup, and never written to a log.</p>
@@ -218,7 +236,7 @@ The date below says when it was last accurate.</p>
   <a href="terms.html">Terms of use</a>
 </nav>
 
-<p class="updated">Last updated 19 September 2026.</p>
+<p class="updated">Last updated 20 September 2026.</p>
 
 </div>
 </body>

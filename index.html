@@ -19,8 +19,8 @@
 
 <p>Good Life OS is a personal health dashboard that runs on its operator's own
 computer. It brings weight, nutrition and short daily check-ins into one place,
-so its operator can see their own trends over time. An optional connection to
-the operator's own Oura account is in development.</p>
+so its operator can see their own trends over time. It also connects to
+the operator's own Oura account, and imports MyFitnessPal nutrition exports.</p>
 
 <p>It has exactly one user, who is also the person who built and runs it. It is
 not a product, not a service, and not offered to anyone else. There are no
@@ -59,11 +59,14 @@ use it.</p>
 <p>Listed here so this page does not describe features as though they exist:</p>
 
 <ul>
-  <li><strong>The Oura connection</strong> — in development. Nothing has been
-      synced from Oura at the time of writing. The
-      <a href="privacy.html">privacy policy</a> describes how Oura data will be
-      handled once the connection is enabled.</li>
-  <li><strong>MyFitnessPal CSV import</strong> — in development.</li>
+  <li><strong>The Oura connection</strong> — built and in use. Sleep,
+      readiness, activity, heart rate and the rest are synced to the
+      operator's computer. Syncs run when the operator requests them, using an
+      explicit date range or a default window of three days initially and
+      fourteen days on subsequent runs. Historical backfill is deferred. The
+      <a href="privacy.html">privacy policy</a> describes exactly what is
+      held.</li>
+  <li><strong>MyFitnessPal CSV import</strong> — built and in use.</li>
   <li><strong>Tape measurements, gut observations and care routines</strong> —
       planned.</li>
   <li><strong>Correlation and pattern analysis</strong> — planned.</li>
@@ -106,7 +109,7 @@ file on the operator's computer and stay there.</p>
 </nav>
 
 <p class="updated">Operated by Ashlandiam.
-Last updated 19 September 2026.</p>
+Last updated 20 September 2026.</p>
 
 </div>
 </body>
