@@ -50,6 +50,14 @@ use it.</p>
   <li>Exports <strong>check-ins</strong> as CSV. Check-ins are
       <strong>export only</strong> — there is no check-in import, and the
       application says so where the export is offered.</li>
+  <li>Connects to the operator's own Oura account and syncs sleep, readiness,
+      activity, heart rate and the rest to the operator's computer. Syncs run
+      when the operator requests them, using an explicit date range or a
+      default window of three days initially and fourteen days on subsequent
+      runs. Historical backfill is deferred. The
+      <a href="privacy.html">privacy policy</a> describes exactly what is
+      held.</li>
+  <li>Imports MyFitnessPal nutrition exports as daily totals.</li>
   <li>Makes local backup snapshots of its database, and can verify and restore
       them.</li>
 </ul>
@@ -59,14 +67,6 @@ use it.</p>
 <p>Listed here so this page does not describe features as though they exist:</p>
 
 <ul>
-  <li><strong>The Oura connection</strong> — built and in use. Sleep,
-      readiness, activity, heart rate and the rest are synced to the
-      operator's computer. Syncs run when the operator requests them, using an
-      explicit date range or a default window of three days initially and
-      fourteen days on subsequent runs. Historical backfill is deferred. The
-      <a href="privacy.html">privacy policy</a> describes exactly what is
-      held.</li>
-  <li><strong>MyFitnessPal CSV import</strong> — built and in use.</li>
   <li><strong>Tape measurements, gut observations and care routines</strong> —
       planned.</li>
   <li><strong>Correlation and pattern analysis</strong> — planned.</li>
